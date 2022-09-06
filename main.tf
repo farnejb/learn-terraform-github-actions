@@ -1,4 +1,13 @@
 terraform {
+
+  backend "remote" {
+    hostname = "firefly.tfe.rocks"
+    organization = "prime-therapeutics"
+
+    workspaces {
+      name = "gh-actions-demo"
+    }
+  }
   required_providers {
     aws = {
       source  = "hashicorp/aws"
@@ -11,14 +20,14 @@ terraform {
   }
   required_version = ">= 1.1.0"
 
-  cloud {
-    hostname = "firefly.tfe.rocks"
-    organization = "prime-therapeutics"
+  # cloud {
+  #   hostname = "firefly.tfe.rocks"
+  #   organization = "prime-therapeutics"
 
-    workspaces {
-      name = "gh-actions-demo"
-    }
-  }
+  #   workspaces {
+  #     name = "gh-actions-demo"
+  #   }
+  # }
 }
 
 provider "aws" {
